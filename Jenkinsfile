@@ -1,12 +1,14 @@
 pipeline {
 	agent any 
 	
-	triggers {
-  		pollSCM '* * * * *'
-	}
 	parameters {
   		string defaultValue: 'DEV', name: 'ENV'
 	}
+	
+	triggers {
+  		pollSCM '* * * * *'
+	}
+	
 	stages {
 	    stage('Checkout') {
 	        steps {
