@@ -1,6 +1,9 @@
 pipeline {
 	agent any 
 	
+	parameters {
+  		choice choices: ['DEV', 'QA', 'UAT'], name: 'ENV'
+	}
 	stages {
 	    stage('Checkout') {
 	        steps {
@@ -12,6 +15,12 @@ pipeline {
 	                 }}
 		stage('Deployment'){
 		   steps {
-		sh 'cp target/PIPELINE.war /home/swapnil/Documents/DevOps-Software/apache-tomcat-9.0.79/webapps'
-			}}	
+		   	Script {
+		   if [ $ENV = "QA" ];then
+        		sh 'cp target/CICD.war /home/swapnil/Documents/DevOps-Software/apache-tomcat-9.0.79/webapps'
+		   elif  [ $ENV = "UAT" ];then
+		   	sh 'cp target/PIPELINE.war /home/swapnil/Documents/DevOps-Software/apache-tomcat-9.0.79/webapps'
+         	echo "deployment has been done!"
+		   fi
+			}}}	
 }}
