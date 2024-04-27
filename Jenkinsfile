@@ -23,7 +23,7 @@ pipeline {
 			script {
 			 if ( env.ENV == 'QA' ){
         	sh 'cp target/PIPELINE.war /home/swapnil/Documents/DevOps-Software/apache-tomcat-9.0.79/webapps'
-        	echo "deployment has been done on QA!"
+        	echo "deployment has been COMPLETED on QA!"
 			 }
 			else ( env.ENV == 'UAT' ){
     		sh 'cp target/PIPELINE.war /home/swapnil/Documents/DevOps-Software/apache-tomcat-9.0.79/webapps'
