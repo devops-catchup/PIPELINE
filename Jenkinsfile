@@ -27,6 +27,9 @@ pipeline {
     		sh 'cp target/PIPELINE.war /home/swapnil/Documents/DevOps-Software/apache-tomcat-9.0.79/webapps'
     		echo "deployment has been done on UAT!"
 			}
-			
-			}}}	
+			}}}
+			stage('notify') {
+	           steps {
+			  sh 'emailext body: 'we are on learning', subject: 'this is just test', to: 'swapnilmahajan30@gmail.com''
+	                 }}	
 }}
