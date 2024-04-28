@@ -29,5 +29,9 @@ pipeline {
     		sh 'cp target/PIPELINE.war /home/swapnil/Documents/DevOps-Software/apache-tomcat-9.0.79/webapps'
     		echo "deployment has been done on UAT!"
 			}
-			}}}	
+			}}}
+		stage('slack-notification'){
+		   steps {
+		     slackSend baseUrl: 'https://hooks.slack.com/services/', channel: '#april-fool', color: 'good', message: 'Welcome to Jenkins SLACK NOTIFICATION', teamDomain: 'devops', tokenCredentialId: 'april'
+		     }}
 }}
